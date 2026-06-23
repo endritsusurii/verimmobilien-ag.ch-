@@ -1,5 +1,3 @@
-import './bootstrap';
-
 const nav = document.getElementById('navbar');
 const logoText = document.getElementById('logo-text');
 const logoSub = document.getElementById('logo-sub');
