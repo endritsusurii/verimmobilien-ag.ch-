@@ -8,6 +8,17 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <style>
+        :root {
+            --brand-red: #ED1C24;
+            --brand-white: #FFFFFF;
+            --brand-gray-light: #E7E7E7;
+            --brand-gray-dark: #B7B7B7;
+            --brand-black: #262525;
+        }
+    </style>
+
+    @stack('styles')
     @stack('styles')
 </head>
 
