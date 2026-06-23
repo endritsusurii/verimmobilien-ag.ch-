@@ -19,7 +19,6 @@
     </style>
 
     @stack('styles')
-    @stack('styles')
 </head>
 
 <body>
