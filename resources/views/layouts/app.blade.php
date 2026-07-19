@@ -7,9 +7,9 @@
     <title>@yield('title', 'VER Immobilien AG')</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ asset('img/apple-touch-icon.png') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 

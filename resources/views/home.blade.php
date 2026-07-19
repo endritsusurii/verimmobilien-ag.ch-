@@ -548,6 +548,264 @@
         </div>
     </section>
 
+    <section id="immobilie_einreichen" class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="rounded-3xl overflow-hidden bg-[#262525] text-white relative">
+
+                <div class="absolute inset-0 bg-gradient-to-r from-[#262525] via-[#262525]/95 to-[#ED1C24]/90"></div>
+
+                <div class="relative z-10 px-10 py-16 lg:flex lg:items-center lg:justify-between">
+
+                    <div class="max-w-3xl">
+
+                        <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold">
+                            VER Immobilien AG
+                        </span>
+
+                        <h2 class="mt-6 text-4xl font-bold leading-tight">
+                            Möchten Sie Ihre Immobilie verkaufen oder vermieten?
+                        </h2>
+
+                        <p class="mt-5 text-lg text-gray-200 leading-8">
+                            Lassen Sie Ihre Immobilie kostenlos bewerten und
+                            erhalten Sie eine professionelle Beratung.
+                            Unser Team begleitet Sie vom ersten Kontakt bis
+                            zum erfolgreichen Verkauf oder zur Vermietung.
+                        </p>
+
+                    </div>
+
+                    <div class="mt-10 lg:mt-0">
+
+                        <button onclick="openPropertyModal()"
+                            class="bg-[#ED1C24] hover:bg-red-700 transition px-8 py-4 rounded-xl font-semibold text-white shadow-xl">
+
+                            Immobilie einreichen
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Property Modal -->
+    <div id="propertyModal" class="fixed inset-0 z-50 hidden bg-black/60 p-4 backdrop-blur-sm">
+        <div class="flex min-h-full items-center justify-center">
+
+            <div class="flex max-h-[80vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
+
+                <!-- Header -->
+                <div class="flex shrink-0 items-start justify-between border-b border-gray-200 bg-white px-6 py-5 md:px-8">
+                    <div class="pr-6">
+                        <span class="inline-flex rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-[#ED1C24]">
+                            VER Immobilien AG
+                        </span>
+
+                        <h2 class="mt-3 text-2xl font-bold text-[#262525] md:text-3xl">
+                            Immobilie einreichen
+                        </h2>
+
+                        <p class="mt-2 text-sm leading-6 text-gray-500 md:text-base">
+                            Füllen Sie das Formular aus. Wir werden Sie schnellstmöglich kontaktieren.
+                        </p>
+                    </div>
+
+                    <button type="button" onclick="closePropertyModal()" aria-label="Modal schliessen"
+                        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#262525] transition hover:bg-gray-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Scrollable content -->
+                <form id="propertyForm" class="flex min-h-0 flex-1 flex-col">
+
+                    <div class="flex-1 overflow-y-auto px-6 py-6 md:px-8">
+
+                        <div class="grid gap-6 md:grid-cols-2">
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Vorname
+                                </label>
+
+                                <input type="text" name="first_name" required
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Nachname
+                                </label>
+
+                                <input type="text" name="last_name" required
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    E-Mail
+                                </label>
+
+                                <input type="email" name="email" required
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Telefon
+                                </label>
+
+                                <input type="tel" name="phone"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Immobilientyp
+                                </label>
+
+                                <select name="property_type"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                                    <option value="">Bitte auswählen</option>
+                                    <option value="wohnung">Wohnung</option>
+                                    <option value="haus">Haus</option>
+                                    <option value="grundstueck">Grundstück</option>
+                                    <option value="gewerbe">Gewerbe</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Angebot
+                                </label>
+
+                                <select name="offer_type"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                                    <option value="">Bitte auswählen</option>
+                                    <option value="verkaufen">Verkaufen</option>
+                                    <option value="vermieten">Vermieten</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Kanton
+                                </label>
+
+                                <input type="text" name="canton"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Ort
+                                </label>
+
+                                <input type="text" name="city"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Adresse
+                                </label>
+
+                                <input type="text" name="address"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Wohnfläche (m²)
+                                </label>
+
+                                <input type="number" name="area" min="0"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Zimmer
+                                </label>
+
+                                <input type="number" name="rooms" min="0" step="0.5"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Wunschpreis (CHF)
+                                </label>
+
+                                <input type="number" name="expected_price" min="0"
+                                    class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Beschreibung
+                                </label>
+
+                                <textarea name="description" rows="5"
+                                    class="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#ED1C24] focus:ring-2 focus:ring-[#ED1C24]/20"></textarea>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="mb-2 block text-sm font-medium text-gray-700">
+                                    Bilder hochladen
+                                </label>
+
+                                <input type="file" name="images[]" multiple accept="image/*"
+                                    class="block w-full rounded-xl border border-dashed border-gray-300 bg-gray-50 p-4 text-sm text-gray-600 file:mr-4 file:rounded-lg file:border-0 file:bg-[#262525] file:px-4 file:py-2 file:font-medium file:text-white hover:file:bg-black">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="flex items-start gap-3">
+                                    <input type="checkbox" name="privacy" required
+                                        class="mt-1 h-4 w-4 rounded border-gray-300 text-[#ED1C24] focus:ring-[#ED1C24]">
+
+                                    <span class="text-sm leading-6 text-gray-600">
+                                        Ich akzeptiere die Datenschutzerklärung.
+                                    </span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Fixed footer -->
+                    <div
+                        class="flex shrink-0 flex-col-reverse gap-3 border-t border-gray-200 bg-white px-6 py-5 sm:flex-row sm:justify-end md:px-8">
+                        <button type="button" onclick="closePropertyModal()"
+                            class="rounded-xl border border-gray-300 px-6 py-3 font-medium text-[#262525] transition hover:bg-gray-100">
+                            Abbrechen
+                        </button>
+
+                        <button type="submit"
+                            class="rounded-xl bg-[#ED1C24] px-8 py-3 font-semibold text-white transition hover:bg-red-700">
+                            Anfrage senden
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
     <section style="padding:5rem 2rem; background:white;">
         <div class="container">
             <div style="text-align:center; margin-bottom:3rem;">
@@ -568,30 +826,116 @@
         </div>
     </section>
 
-    <section style="padding:5rem 2rem; background:#f7f7f7;">
+    <section style="padding:7rem 2rem;background:#f8f8f8;overflow:hidden;">
+
         <div class="container">
-            <div style="text-align:center; margin-bottom:3rem;">
-                <div class="section-label">Wie es funktioniert</div>
-                <h2 style="font-size:2rem; font-weight:800;">So einfach geht's</h2>
+
+            <div style="max-width:760px;margin:0 auto 4rem;text-align:center;">
+
+                <div class="section-label">
+                    Unser Prozess
+                </div>
+
+                <h2 style="font-size:2.6rem;font-weight:900;color:#262525;margin-bottom:1rem;">
+                    So einfach verkaufen Sie Ihre Immobilie
+                </h2>
+
+                <p style="color:#777;line-height:1.8;font-size:1rem;">
+                    Von der ersten Kontaktaufnahme bis zur erfolgreichen Übergabe begleiten wir Sie
+                    persönlich und professionell in jeder Phase.
+                </p>
+
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem;">
-                @foreach ([['Beratungsgespräch', 'Kostenloses Erstgespräch.'], ['Bewertung', 'Professionelle Marktanalyse.'], ['Vermarktung', 'Gezielte Vermarktung.'], ['Übergabe', 'Sichere Vertragsabwicklung.']] as $i => $step)
-                    <div class="step-card"
-                        style="padding:1.5rem; border-top:3px solid {{ $i === 0 ? 'var(--brand-red)' : 'var(--brand-gray-light)' }};">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;position:relative;">
+
+                @foreach ([
+            [
+                'title' => 'Erstgespräch',
+                'text' => 'In einem unverbindlichen Gespräch lernen wir Ihre Immobilie und Ihre Wünsche kennen.',
+            ],
+            [
+                'title' => 'Bewertung & Strategie',
+                'text' => 'Wir analysieren den Markt und entwickeln die optimale Verkaufsstrategie.',
+            ],
+            [
+                'title' => 'Professionelle Vermarktung',
+                'text' => 'Ihre Immobilie wird hochwertig präsentiert und gezielt potenziellen Käufern angeboten.',
+            ],
+            [
+                'title' => 'Verkauf & Übergabe',
+                'text' => 'Wir begleiten Sie bis zum Vertragsabschluss und einer sicheren Übergabe.',
+            ],
+        ] as $index => $step)
+                    <div style="
+                    background:#fff;
+                    border-radius:28px;
+                    padding:2.5rem;
+                    position:relative;
+                    transition:.35s;
+                    box-shadow:0 15px 45px rgba(0,0,0,.06);
+                    border:1px solid #ececec;
+                "
+                        onmouseover="this.style.transform='translateY(-8px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+
                         <div
-                            style="width:36px; height:36px; background:var(--brand-red); color:white; display:flex; align-items:center; justify-content:center; font-weight:800;">
-                            {{ $i + 1 }}
+                            style="
+                        width:64px;
+                        height:64px;
+                        border-radius:50%;
+                        background:#ED1C24;
+                        color:white;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:1.4rem;
+                        font-weight:800;
+                        margin-bottom:2rem;
+                        box-shadow:0 10px 30px rgba(237,28,36,.35);
+                    ">
+                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                         </div>
 
-                        <h4>{{ $step[0] }}</h4>
-                        <p style="color:var(--brand-gray-dark); font-size:.85rem;">
-                            {{ $step[1] }}
+                        <h3
+                            style="
+                        font-size:1.35rem;
+                        font-weight:800;
+                        color:#262525;
+                        margin-bottom:1rem;
+                    ">
+                            {{ $step['title'] }}
+                        </h3>
+
+                        <p
+                            style="
+                        color:#777;
+                        line-height:1.8;
+                        font-size:.96rem;
+                    ">
+                            {{ $step['text'] }}
                         </p>
+
+                        <div
+                            style="
+                        position:absolute;
+                        right:25px;
+                        bottom:25px;
+                        font-size:4rem;
+                        font-weight:900;
+                        color:#f2f2f2;
+                        user-select:none;
+                    ">
+                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                        </div>
+
                     </div>
                 @endforeach
+
             </div>
+
         </div>
+
     </section>
 
     <section style="padding:5rem 2rem; background:white;">
@@ -616,31 +960,30 @@
 
     <section id="kontakt" class="cta-banner">
         <div style="max-width:900px; margin:0 auto; text-align:center;">
+
             <div
                 style="font-size:.72rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:1rem;">
-                Jetzt starten
+                Jetzt Kontakt aufnehmen
             </div>
 
             <h2 style="font-size:2.4rem; font-weight:900; color:white; margin:0 0 1rem;">
-                Ihre Immobilie in besten Händen.
+                Ihre Immobilie verdient die beste Betreuung.
             </h2>
 
             <p
-                style="font-size:.95rem; color:rgba(255,255,255,.85); max-width:480px; margin:0 auto 2.5rem; line-height:1.75;">
-                Lassen Sie Ihre Immobilie kostenlos bewerten oder kontaktieren Sie uns für ein unverbindliches Erstgespräch.
+                style="font-size:.95rem; color:rgba(255,255,255,.85); max-width:580px; margin:0 auto 2.5rem; line-height:1.75;">
+                Unser erfahrenes Team steht Ihnen für alle Fragen rund um Verkauf, Vermietung
+                und Immobilienverwaltung gerne persönlich zur Verfügung. Kontaktieren Sie uns
+                für eine unverbindliche Beratung.
             </p>
 
-            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
-                <a href="#"
-                    style="background:white; color:var(--brand-red); padding:.9rem 2rem; text-decoration:none; font-weight:800; text-transform:uppercase;">
-                    Kostenlose Bewertung
-                </a>
-
+            <div style="display:flex; justify-content:center;">
                 <a href="tel:+41441234567"
-                    style="border:2px solid rgba(255,255,255,.55); color:white; padding:.9rem 2rem; text-decoration:none; font-weight:600; text-transform:uppercase;">
+                    style="border:2px solid rgba(255,255,255,.55); color:white; padding:.95rem 2.2rem; text-decoration:none; font-weight:700; text-transform:uppercase; transition:.3s;">
                     +41 44 123 45 67
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -664,5 +1007,19 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        function openPropertyModal() {
+            const modal = document.getElementById('propertyModal');
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closePropertyModal() {
+            const modal = document.getElementById('propertyModal');
+
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
     </script>
 @endpush
