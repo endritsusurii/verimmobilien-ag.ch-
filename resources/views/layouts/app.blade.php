@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'VER Immobilien AG')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/favicon.png') }}">
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

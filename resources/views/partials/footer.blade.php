@@ -5,15 +5,10 @@
 
             <div>
                 <div class="footer-logo">
-                    <svg width="36" height="36" viewBox="0 0 38 38" fill="none">
-                        <rect width="38" height="38" rx="4" fill="var(--brand-red)" />
-                        <path d="M10 26V16l9-8 9 8v10H23v-6h-8v6H10z" fill="white" />
-                    </svg>
 
-                    <div>
-                        <div class="footer-logo-title">VER IMMOBILIEN</div>
-                        <div class="footer-logo-sub">AG · SCHWEIZ</div>
-                    </div>
+                    <a href="/" class="logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Ver Immobilien AG" class="logo-image">
+                    </a>
                 </div>
 
                 <p class="footer-desc">
@@ -21,11 +16,7 @@
                 </p>
             </div>
 
-            @foreach ([
-                ['Leistungen', ['Kaufen', 'Verkaufen', 'Vermieten', 'Verwaltung', 'Bewertung']],
-                ['Unternehmen', ['Über uns', 'Team', 'Karriere', 'News', 'Kontakt']],
-                ['Rechtliches', ['Impressum', 'Datenschutz', 'AGB', 'Cookie-Richtlinie']]
-            ] as $col)
+            @foreach ([['Leistungen', ['Kaufen', 'Verkaufen', 'Vermieten', 'Verwaltung', 'Bewertung']], ['Unternehmen', ['Über uns', 'Team', 'Karriere', 'News', 'Kontakt']], ['Rechtliches', ['Impressum', 'Datenschutz', 'AGB', 'Cookie-Richtlinie']]] as $col)
                 <div>
                     <h5 class="footer-title">{{ $col[0] }}</h5>
 
