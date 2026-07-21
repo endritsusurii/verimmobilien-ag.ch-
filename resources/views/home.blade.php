@@ -2,361 +2,7 @@
 
 @section('title', 'VER Immobilien AG — Immobilien. Werte. Vertrauen.')
 
-@push('styles')
-    <style>
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            color: var(--brand-black);
-            background: var(--brand-white);
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header */
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            transition: background .35s, box-shadow .35s;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.97);
-            box-shadow: 0 2px 24px rgba(0, 0, 0, .08);
-            backdrop-filter: blur(12px);
-        }
-
-        .nav-inner {
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-image {
-            width: 100%;
-            height: 50px;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            position: relative;
-            font-size: .85rem;
-            font-weight: 500;
-            color: var(--brand-white);
-            text-decoration: none;
-            padding: .25rem 0;
-            transition: color .2s;
-        }
-
-        .navbar.scrolled .nav-link {
-            color: var(--brand-black);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--brand-red);
-            transition: width .25s;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--brand-red);
-        }
-
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            background: var(--brand-red);
-            color: var(--brand-white);
-            font-size: .8rem;
-            font-weight: 700;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-            padding: .7rem 1.4rem;
-            text-decoration: none;
-        }
-
-        .nav-cta:hover {
-            background: #c9151b;
-        }
-
-        /* Footer */
-
-        .footer {
-            background: var(--brand-black);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: .65rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .footer-logo-title {
-            font-size: .78rem;
-            font-weight: 800;
-            letter-spacing: .1em;
-            color: var(--brand-white);
-        }
-
-        .footer-logo-sub {
-            font-size: .58rem;
-            color: var(--brand-gray-dark);
-            letter-spacing: .15em;
-        }
-
-        .footer-desc {
-            font-size: .8rem;
-            color: var(--brand-gray-dark);
-            line-height: 1.75;
-            max-width: 260px;
-        }
-
-        .footer-title {
-            font-size: .75rem;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--brand-white);
-            margin: 0 0 1.25rem;
-        }
-
-        .footer-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: .6rem;
-        }
-
-        .footer-link {
-            color: var(--brand-gray-dark);
-            font-size: .82rem;
-            text-decoration: none;
-            transition: color .2s;
-        }
-
-        .footer-link:hover {
-            color: var(--brand-red);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, .08);
-            padding-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .footer-bottom p {
-            font-size: .75rem;
-            color: var(--brand-gray-dark);
-            margin: 0;
-        }
-
-        /* Mobile */
-
-        @media(max-width: 768px) {
-            .hidden-mobile {
-                display: none !important;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .hero {
-            height: 100vh;
-            min-height: 680px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-img {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=85') center/cover no-repeat;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(105deg,
-                    rgba(38, 37, 37, .88) 0%,
-                    rgba(237, 28, 36, .45) 52%,
-                    rgba(38, 37, 37, .2) 100%);
-        }
-
-        .hero-strip {
-            position: absolute;
-            top: 0;
-            right: -120px;
-            bottom: 0;
-            width: 380px;
-            background: var(--brand-red);
-            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-            opacity: .12;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        .section-label {
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--brand-red);
-        }
-
-        .search-card {
-            background: var(--brand-white);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .14);
-            margin-top: -52px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .search-tab {
-            font-size: .8rem;
-            font-weight: 600;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            padding: .65rem 1.4rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .search-tab.active {
-            color: var(--brand-red);
-            border-bottom: 3px solid var(--brand-red);
-        }
-
-        .field-wrap {
-            border-right: 1px solid var(--brand-gray-light);
-            padding: .9rem 1.4rem;
-            flex: 1;
-        }
-
-        .field-wrap label {
-            font-size: .68rem;
-            font-weight: 600;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--brand-gray-dark);
-        }
-
-        .field-wrap input,
-        .field-wrap select {
-            border: none;
-            outline: none;
-            width: 100%;
-            font-size: .88rem;
-            font-weight: 500;
-            color: var(--brand-black);
-            background: transparent;
-        }
-
-        .prop-card,
-        .why-card,
-        .testimonial-card,
-        .step-card {
-            background: var(--brand-white);
-            transition: .3s;
-        }
-
-        .prop-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, .13);
-        }
-
-        .prop-card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .cta-banner {
-            background: var(--brand-red);
-            padding: 5rem 2rem;
-        }
-
-        .btn-red {
-            background: var(--brand-red);
-            color: var(--brand-white);
-            padding: .85rem 1.75rem;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: inline-flex;
-            align-items: center;
-            gap: .6rem;
-        }
-
-        .btn-red:hover {
-            background: #c9151b;
-        }
-
-        @media(max-width:768px) {
-            .hero {
-                min-height: 620px;
-            }
-        }
-    </style>
-@endpush
 
 @section('content')
 
@@ -461,7 +107,7 @@
         </div>
     </section>
 
-    <section id="objekte" style="padding:5rem 2rem; background:#f7f7f7;">
+    <section id="immobilien" style="padding:5rem 2rem; background:#f7f7f7;">
         <div class="container">
 
             <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
@@ -806,27 +452,98 @@
     </div>
 
 
-    <section style="padding:5rem 2rem; background:white;">
-        <div class="container">
-            <div style="text-align:center; margin-bottom:3rem;">
-                <div class="section-label">Warum VER</div>
-                <h2 style="font-size:2rem; font-weight:800;">Ihr Vorteil mit uns</h2>
-            </div>
+   <section id="warum-ver" class="bg-[#f8f8f8] py-24">
 
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem;">
-                @foreach ([['Diskrete Abwicklung', 'Ihre Privatsphäre steht für uns an erster Stelle.'], ['Marktkenntnis', 'Fundiertes Wissen des Schweizer Immobilienmarkts.'], ['Persönliche Beratung', 'Individuelle Lösungen für jeden Kunden.'], ['Rundum-Service', 'Von der Besichtigung bis zur Schlüsselübergabe.']] as $item)
-                    <div class="why-card" style="padding:2rem; border-bottom:3px solid var(--brand-red);">
-                        <h4>{{ $item[0] }}</h4>
-                        <p style="color:var(--brand-gray-dark); font-size:.85rem; line-height:1.7;">
-                            {{ $item[1] }}
-                        </p>
-                    </div>
-                @endforeach
-            </div>
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl mx-auto text-center mb-16">
+
+            <span
+                class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#ED1C24]">
+                <span class="w-10 h-px bg-[#ED1C24]"></span>
+                Warum VER
+                <span class="w-10 h-px bg-[#ED1C24]"></span>
+            </span>
+
+            <h2 class="mt-6 text-4xl lg:text-5xl font-black text-[#262525]">
+                Ihr Vorteil mit VER Immobilien
+            </h2>
+
+            <p class="mt-6 text-gray-500 leading-8 text-lg">
+                Wir verbinden Marktkenntnis, Diskretion und persönliche Beratung,
+                um für jede Immobilie die optimale Lösung zu finden.
+            </p>
+
         </div>
-    </section>
 
-    <section style="padding:7rem 2rem;background:#f8f8f8;overflow:hidden;">
+        @php
+            $advantages = [
+                [
+                    'number' => '01',
+                    'icon' => '🔒',
+                    'title' => 'Diskrete Abwicklung',
+                    'text' => 'Ihre Privatsphäre steht bei jeder Transaktion an erster Stelle.',
+                ],
+                [
+                    'number' => '02',
+                    'icon' => '📊',
+                    'title' => 'Marktkenntnis',
+                    'text' => 'Fundierte Analysen und langjährige Erfahrung im Schweizer Immobilienmarkt.',
+                ],
+                [
+                    'number' => '03',
+                    'icon' => '🤝',
+                    'title' => 'Persönliche Beratung',
+                    'text' => 'Individuelle Betreuung mit massgeschneiderten Lösungen für jeden Kunden.',
+                ],
+                [
+                    'number' => '04',
+                    'icon' => '🏡',
+                    'title' => 'Rundum-Service',
+                    'text' => 'Von der Bewertung bis zur Schlüsselübergabe begleiten wir Sie persönlich.',
+                ],
+            ];
+        @endphp
+
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+            @foreach ($advantages as $item)
+
+                <div
+                    class="group relative overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 transition duration-300 hover:-translate-y-2 hover:border-[#ED1C24] hover:shadow-2xl">
+
+                    <div
+                        class="absolute right-5 top-4 text-6xl font-black text-gray-100 group-hover:text-[#ED1C24]/10 transition">
+                        {{ $item['number'] }}
+                    </div>
+
+                    <div
+                        class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ED1C24]/10 text-3xl transition group-hover:bg-[#ED1C24] group-hover:text-white">
+                        {{ $item['icon'] }}
+                    </div>
+
+                    <h3 class="mt-8 text-xl font-bold text-[#262525]">
+                        {{ $item['title'] }}
+                    </h3>
+
+                    <p class="mt-4 text-gray-500 leading-7">
+                        {{ $item['text'] }}
+                    </p>
+
+                    <div
+                        class="mt-8 h-1 w-12 rounded-full bg-[#ED1C24] transition-all duration-300 group-hover:w-24">
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    </div>
+
+</section>
+    <section id="prozess" style="padding:7rem 2rem;background:#f8f8f8;overflow:hidden;">
 
         <div class="container">
 

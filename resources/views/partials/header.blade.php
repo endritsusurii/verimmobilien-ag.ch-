@@ -7,8 +7,10 @@
             </a>
 
             <nav class="nav-links hidden-mobile">
-                @foreach (['Immobilien', 'Dienstleistungen', 'Warum VER', 'Prozess', 'Kontakt'] as $link)
-                    <a href="#" class="nav-link">{{ $link }}</a>
+                @foreach ([['title' => 'Immobilien', 'href' => '#immobilien'], ['title' => 'Warum VER', 'href' => '#warum-ver'], ['title' => 'Prozess', 'href' => '#prozess'], ['title' => 'Kontakt', 'href' => '#kontakt']] as $link)
+                    <a href="{{ $link['href'] }}" class="nav-link">
+                        {{ $link['title'] }}
+                    </a>
                 @endforeach
             </nav>
 
