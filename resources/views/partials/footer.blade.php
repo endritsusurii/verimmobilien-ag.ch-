@@ -7,11 +7,7 @@
             <div class="footer-company">
                 <div class="footer-logo">
                     <a href="{{ url('/') }}" class="logo">
-                        <img
-                            src="{{ asset('img/logo.png') }}"
-                            alt="VER Immobilien AG"
-                            class="logo-image"
-                        >
+                        <img src="{{ asset('img/logo.png') }}" alt="VER Immobilien AG" class="logo-image">
                     </a>
                 </div>
 
@@ -21,7 +17,7 @@
                 </p>
 
                 <a href="tel:+41441234567" class="footer-phone">
-                    +41 44 123 45 67
+                    +41 79 887 80 80
                 </a>
             </div>
 

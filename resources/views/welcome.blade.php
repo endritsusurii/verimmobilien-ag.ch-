@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('title', 'VER Immobilien AG — Immobilien. Werte. Vertrauen.')
-
-
 
 @section('content')
 
@@ -51,59 +49,125 @@
         </div>
     </section>
 
-    <section style="background:#f7f7f7; padding-bottom:3.5rem;">
-        <div class="container">
-            <div class="search-card">
+    <section class="bg-[#f7f7f7] px-5 pb-14 sm:px-6">
+        <div class="mx-auto max-w-7xl">
 
-                <div style="display:flex; border-bottom:1px solid var(--brand-gray-light); padding:0 1rem;">
-                    @foreach (['Kaufen', 'Verkaufen', 'Vermieten'] as $tab)
-                        <button class="search-tab {{ $loop->first ? 'active' : '' }}">{{ $tab }}</button>
-                    @endforeach
+            <form method="GET" action="{{ url('/immobilien') }}"
+                class="relative z-10 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-[0_25px_80px_rgba(0,0,0,0.10)]">
+
+                <div class="grid lg:grid-cols-[1.2fr_1.6fr_1fr_1fr_1fr_auto]">
+
+                    {{-- Angebot --}}
+                    <div class="border-b border-gray-200 p-5 lg:border-b-0 lg:border-r">
+
+                        <label for="offer_type"
+                            class="mb-2 block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                            Angebot
+                        </label>
+
+                        <select id="offer_type" name="offer_type"
+                            class="w-full cursor-pointer bg-transparent text-sm font-bold text-[#262525] outline-none">
+                            <option value="">Alle Angebote</option>
+                            <option value="kaufen">Kaufen</option>
+                            <option value="verkaufen">Verkaufen</option>
+                            <option value="vermieten">Vermieten</option>
+                        </select>
+
+                    </div>
+
+                    {{-- Search --}}
+                    <div class="border-b border-gray-200 p-5 lg:border-b-0 lg:border-r">
+
+                        <label for="keyword"
+                            class="mb-2 block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                            Suchbegriff
+                        </label>
+
+                        <input id="keyword" type="text" name="keyword" placeholder="z.B. Zürich, Haus, 4.5 Zi."
+                            class="w-full bg-transparent text-sm font-semibold text-[#262525] outline-none placeholder:font-normal placeholder:text-gray-400">
+
+                    </div>
+
+                    {{-- Category --}}
+                    <div class="border-b border-gray-200 p-5 lg:border-b-0 lg:border-r">
+
+                        <label for="category"
+                            class="mb-2 block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                            Kategorie
+                        </label>
+
+                        <select id="category" name="category"
+                            class="w-full cursor-pointer bg-transparent text-sm font-bold text-[#262525] outline-none">
+                            <option value="">Alle Typen</option>
+                            <option value="haus">Haus</option>
+                            <option value="wohnung">Wohnung</option>
+                            <option value="villa">Villa</option>
+                            <option value="grundstueck">Grundstück</option>
+                            <option value="gewerbe">Gewerbe</option>
+                        </select>
+
+                    </div>
+
+                    {{-- Rooms --}}
+                    <div class="border-b border-gray-200 p-5 lg:border-b-0 lg:border-r">
+
+                        <label for="rooms"
+                            class="mb-2 block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                            Zimmer
+                        </label>
+
+                        <select id="rooms" name="rooms"
+                            class="w-full cursor-pointer bg-transparent text-sm font-bold text-[#262525] outline-none">
+                            <option value="">Beliebig</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                            <option value="5">5+</option>
+                        </select>
+
+                    </div>
+
+                    {{-- Canton --}}
+                    <div class="p-5 lg:border-r">
+
+                        <label for="canton"
+                            class="mb-2 block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                            Kanton
+                        </label>
+
+                        <select id="canton" name="canton"
+                            class="w-full cursor-pointer bg-transparent text-sm font-bold text-[#262525] outline-none">
+                            <option value="">Beliebig</option>
+                            <option value="zuerich">Zürich</option>
+                            <option value="bern">Bern</option>
+                            <option value="basel">Basel</option>
+                            <option value="zug">Zug</option>
+                            <option value="luzern">Luzern</option>
+                            <option value="aargau">Aargau</option>
+                        </select>
+
+                    </div>
+
+                    {{-- Submit --}}
+                    <div class="flex items-center p-4">
+
+                        <button type="submit"
+                            class="flex min-h-[58px] w-full items-center justify-center gap-3 rounded-2xl bg-[#ED1C24] px-7 text-sm font-black text-white shadow-lg shadow-red-200 transition hover:-translate-y-1 hover:bg-red-700 lg:w-auto">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+
+                            Suchen
+                        </button>
+
+                    </div>
+
                 </div>
 
-                <div style="display:flex; flex-wrap:wrap;">
-                    <div class="field-wrap" style="flex:2; min-width:200px;">
-                        <label>Suchbegriff</label>
-                        <input type="text" placeholder="z.B. Zürich, Haus, 4.5 Zi.">
-                    </div>
+            </form>
 
-                    <div class="field-wrap">
-                        <label>Kategorie</label>
-                        <select>
-                            <option>Alle Typen</option>
-                            <option>Haus</option>
-                            <option>Wohnung</option>
-                            <option>Villa</option>
-                        </select>
-                    </div>
-
-                    <div class="field-wrap">
-                        <label>Zimmer</label>
-                        <select>
-                            <option>Beliebig</option>
-                            <option>1+</option>
-                            <option>2+</option>
-                            <option>3+</option>
-                            <option>4+</option>
-                        </select>
-                    </div>
-
-                    <div class="field-wrap">
-                        <label>Kanton</label>
-                        <select>
-                            <option>Beliebig</option>
-                            <option>Zürich</option>
-                            <option>Bern</option>
-                            <option>Basel</option>
-                            <option>Zug</option>
-                        </select>
-                    </div>
-
-                    <div style="padding:.75rem 1.25rem; display:flex; align-items:center;">
-                        <button class="btn-red" style="border:none; cursor:pointer;">Suchen</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -452,97 +516,93 @@
     </div>
 
 
-   <section id="warum-ver" class="bg-[#f8f8f8] py-24">
+    <section id="warum-ver" class="bg-[#f8f8f8] py-24">
 
-    <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6">
 
-        <div class="max-w-3xl mx-auto text-center mb-16">
+            <div class="max-w-3xl mx-auto text-center mb-16">
 
-            <span
-                class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#ED1C24]">
-                <span class="w-10 h-px bg-[#ED1C24]"></span>
-                Warum VER
-                <span class="w-10 h-px bg-[#ED1C24]"></span>
-            </span>
+                <span class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-[#ED1C24]">
+                    <span class="w-10 h-px bg-[#ED1C24]"></span>
+                    Warum VER
+                    <span class="w-10 h-px bg-[#ED1C24]"></span>
+                </span>
 
-            <h2 class="mt-6 text-4xl lg:text-5xl font-black text-[#262525]">
-                Ihr Vorteil mit VER Immobilien
-            </h2>
+                <h2 class="mt-6 text-4xl lg:text-5xl font-black text-[#262525]">
+                    Ihr Vorteil mit VER Immobilien
+                </h2>
 
-            <p class="mt-6 text-gray-500 leading-8 text-lg">
-                Wir verbinden Marktkenntnis, Diskretion und persönliche Beratung,
-                um für jede Immobilie die optimale Lösung zu finden.
-            </p>
+                <p class="mt-6 text-gray-500 leading-8 text-lg">
+                    Wir verbinden Marktkenntnis, Diskretion und persönliche Beratung,
+                    um für jede Immobilie die optimale Lösung zu finden.
+                </p>
+
+            </div>
+
+            @php
+                $advantages = [
+                    [
+                        'number' => '01',
+                        'icon' => '🔒',
+                        'title' => 'Diskrete Abwicklung',
+                        'text' => 'Ihre Privatsphäre steht bei jeder Transaktion an erster Stelle.',
+                    ],
+                    [
+                        'number' => '02',
+                        'icon' => '📊',
+                        'title' => 'Marktkenntnis',
+                        'text' => 'Fundierte Analysen und langjährige Erfahrung im Schweizer Immobilienmarkt.',
+                    ],
+                    [
+                        'number' => '03',
+                        'icon' => '🤝',
+                        'title' => 'Persönliche Beratung',
+                        'text' => 'Individuelle Betreuung mit massgeschneiderten Lösungen für jeden Kunden.',
+                    ],
+                    [
+                        'number' => '04',
+                        'icon' => '🏡',
+                        'title' => 'Rundum-Service',
+                        'text' => 'Von der Bewertung bis zur Schlüsselübergabe begleiten wir Sie persönlich.',
+                    ],
+                ];
+            @endphp
+
+            <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+                @foreach ($advantages as $item)
+                    <div
+                        class="group relative overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 transition duration-300 hover:-translate-y-2 hover:border-[#ED1C24] hover:shadow-2xl">
+
+                        <div
+                            class="absolute right-5 top-4 text-6xl font-black text-gray-100 group-hover:text-[#ED1C24]/10 transition">
+                            {{ $item['number'] }}
+                        </div>
+
+                        <div
+                            class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ED1C24]/10 text-3xl transition group-hover:bg-[#ED1C24] group-hover:text-white">
+                            {{ $item['icon'] }}
+                        </div>
+
+                        <h3 class="mt-8 text-xl font-bold text-[#262525]">
+                            {{ $item['title'] }}
+                        </h3>
+
+                        <p class="mt-4 text-gray-500 leading-7">
+                            {{ $item['text'] }}
+                        </p>
+
+                        <div class="mt-8 h-1 w-12 rounded-full bg-[#ED1C24] transition-all duration-300 group-hover:w-24">
+                        </div>
+
+                    </div>
+                @endforeach
+
+            </div>
 
         </div>
 
-        @php
-            $advantages = [
-                [
-                    'number' => '01',
-                    'icon' => '🔒',
-                    'title' => 'Diskrete Abwicklung',
-                    'text' => 'Ihre Privatsphäre steht bei jeder Transaktion an erster Stelle.',
-                ],
-                [
-                    'number' => '02',
-                    'icon' => '📊',
-                    'title' => 'Marktkenntnis',
-                    'text' => 'Fundierte Analysen und langjährige Erfahrung im Schweizer Immobilienmarkt.',
-                ],
-                [
-                    'number' => '03',
-                    'icon' => '🤝',
-                    'title' => 'Persönliche Beratung',
-                    'text' => 'Individuelle Betreuung mit massgeschneiderten Lösungen für jeden Kunden.',
-                ],
-                [
-                    'number' => '04',
-                    'icon' => '🏡',
-                    'title' => 'Rundum-Service',
-                    'text' => 'Von der Bewertung bis zur Schlüsselübergabe begleiten wir Sie persönlich.',
-                ],
-            ];
-        @endphp
-
-        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-
-            @foreach ($advantages as $item)
-
-                <div
-                    class="group relative overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 transition duration-300 hover:-translate-y-2 hover:border-[#ED1C24] hover:shadow-2xl">
-
-                    <div
-                        class="absolute right-5 top-4 text-6xl font-black text-gray-100 group-hover:text-[#ED1C24]/10 transition">
-                        {{ $item['number'] }}
-                    </div>
-
-                    <div
-                        class="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ED1C24]/10 text-3xl transition group-hover:bg-[#ED1C24] group-hover:text-white">
-                        {{ $item['icon'] }}
-                    </div>
-
-                    <h3 class="mt-8 text-xl font-bold text-[#262525]">
-                        {{ $item['title'] }}
-                    </h3>
-
-                    <p class="mt-4 text-gray-500 leading-7">
-                        {{ $item['text'] }}
-                    </p>
-
-                    <div
-                        class="mt-8 h-1 w-12 rounded-full bg-[#ED1C24] transition-all duration-300 group-hover:w-24">
-                    </div>
-
-                </div>
-
-            @endforeach
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
     <section id="prozess" style="padding:7rem 2rem;background:#f8f8f8;overflow:hidden;">
 
         <div class="container">
@@ -697,7 +757,7 @@
             <div style="display:flex; justify-content:center;">
                 <a href="tel:+41441234567"
                     style="border:2px solid rgba(255,255,255,.55); color:white; padding:.95rem 2.2rem; text-decoration:none; font-weight:700; text-transform:uppercase; transition:.3s;">
-                    +41 44 123 45 67
+                    +41 79 887 80 80
                 </a>
             </div>
 
